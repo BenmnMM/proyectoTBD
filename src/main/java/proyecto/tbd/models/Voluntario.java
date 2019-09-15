@@ -6,44 +6,21 @@ import org.springframework.data.annotation.Id;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
+import java.io.Serializable;
 
 
-public class Voluntario {
-
-    private long id;
+@Embeddable
+@Table(name = "Voluntario")
+public class Voluntario implements Serializable {
+    @Id
+    private Long id;
 
 
     private String nombreV;
 
 
-    private String apellidoV;
 
-
-	private String emailV;
-
-    public String getNombreV() {
-        return nombreV;
-    }
-
-    public void setNombreV(String nombreV) {
-        this.nombreV = nombreV;
-    }
-
-    public String getApellidoV() {
-        return apellidoV;
-    }
-
-    public void setApellidoV(String apellidoV) {
-        this.apellidoV = apellidoV;
-    }
-
-    public String getEmailV() {
-        return emailV;
-    }
-
-    public void setEmailV(String emailV) {
-        this.emailV = emailV;
-    }
+    public Voluntario(){}
 
     public long getId() {
         return id;
@@ -53,9 +30,11 @@ public class Voluntario {
         this.id = id;
     }
 
-    public Voluntario(String nombreV, String apellidoV, String emailV) {
+    public String getNombreV() {
+        return nombreV;
+    }
+
+    public void setNombreV(String nombreV) {
         this.nombreV = nombreV;
-        this.apellidoV = apellidoV;
-        this.emailV = emailV;
     }
 }

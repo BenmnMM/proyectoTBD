@@ -12,7 +12,7 @@ public class Caracteristica {
     private String nombreC;
     private String descripcionC;
 	private List<Tarea> tareasC;
-	private List<Voluntario> voluntariosC;
+	//private List<Voluntario> voluntariosC;
 
 	public long getId() {
 		return id;
@@ -46,11 +46,5 @@ public class Caracteristica {
 		this.tareasC = tareasC;
 	}
 
-	public List<Voluntario> getVoluntariosC() {
-		return voluntariosC;
-	}
 
-	public void setVoluntariosC(List<Voluntario> voluntariosC) {
-		this.voluntariosC = voluntariosC;
-	}
 }

@@ -6,7 +6,7 @@ public class Tarea {
     private String nombre;
     private String descripcion;
     private int cantidad_voluntarios;
-    private List<Voluntario> voluntarios;
+    //private List<Voluntario> voluntarios;
     private List<Caracteristica> caracteristicas;
 
     public String getNombre() {
@@ -33,13 +33,7 @@ public class Tarea {
         this.cantidad_voluntarios = cantidad_voluntarios;
     }
 
-    public List<Voluntario> getVoluntarios() {
-        return voluntarios;
-    }
 
-    public void setVoluntarios(List<Voluntario> voluntarios) {
-        this.voluntarios = voluntarios;
-    }
 
     public List<Caracteristica> getCaracteristicas() {
         return caracteristicas;
