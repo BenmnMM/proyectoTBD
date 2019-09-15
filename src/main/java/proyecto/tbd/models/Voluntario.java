@@ -9,15 +9,18 @@ import java.io.Serializable;
 
 
 @Entity
-@Table(name = "Voluntario")
+@Table(name = "voluntario")
 public class Voluntario implements Serializable {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id", nullable = false)
     private Long id;
+    @Column(name = "nombreV", nullable = false)
     private String nombreV;
 
-    public Voluntario(Long id, String nombreV) {
-        this.id = id;
+    public Voluntario(String nombreV) {
+
         this.nombreV = nombreV;
     }
 
