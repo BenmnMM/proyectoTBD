@@ -9,6 +9,6 @@ import java.util.List;
 
 @Repository
 public interface VoluntarioRepository extends JpaRepository<Voluntario, Long>{
-        Voluntario findBy_Id(Long id);
+        Voluntario findByid(Long id);
 
 }

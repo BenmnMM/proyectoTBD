@@ -2,23 +2,24 @@ package proyecto.tbd.models;
 
 
 import org.springframework.boot.autoconfigure.domain.EntityScan;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import java.io.Serializable;
 
 
-@Embeddable
+@Entity
 @Table(name = "Voluntario")
 public class Voluntario implements Serializable {
+
     @Id
     private Long id;
-
-
     private String nombreV;
 
-
+    public Voluntario(Long id, String nombreV) {
+        this.id = id;
+        this.nombreV = nombreV;
+    }
 
     public Voluntario(){}
 

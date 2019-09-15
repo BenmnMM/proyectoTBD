@@ -20,7 +20,7 @@ public class ControladorVoluntario {
     private VoluntarioService voluntarioService;
 
     @GetMapping(path = "/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Voluntario findById(@PathVariable Long id) {
+    public Voluntario findBy_Id(@PathVariable Long id) {
 
         Voluntario voluntarios = voluntarioService.getVoluntario(id);
         return voluntarios;

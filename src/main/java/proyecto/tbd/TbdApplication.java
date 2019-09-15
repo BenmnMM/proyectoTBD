@@ -10,6 +10,9 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 
 
+@EnableJpaRepositories("proyecto.tbd.repository")
+@ComponentScan(basePackages = { "proyecto.tbd.models" })
+@EntityScan("proyecto.tbd.*")
 @SpringBootApplication
 public class TbdApplication {
 

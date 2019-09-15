@@ -17,7 +17,7 @@ public class VoluntarioService {
 
     //Get voluntario by name
     public Voluntario getVoluntario(Long id) {
-        return voluntarioRepository.findBy_Id(id);
+        return voluntarioRepository.findByid(id);
     }
 
 }
