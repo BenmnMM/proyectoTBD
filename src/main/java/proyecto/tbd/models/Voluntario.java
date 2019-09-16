@@ -15,16 +15,43 @@ public class Voluntario implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id", nullable = false)
-    private Long id;
+    private long id;
+
+
     @Column(name = "nombreV", nullable = false)
     private String nombreV;
 
-    public Voluntario(String nombreV) {
+    @Column(name = "edadV", nullable = false)
+    private Integer edadV;
 
+    @Column(name = "generoV", nullable = false)
+    private  String generoV;
+
+
+    public Voluntario(long id, String nombreV,Integer edadV, String generoV) {
+        this.id = id;
         this.nombreV = nombreV;
+        this.edadV=edadV;
+        this.generoV=generoV;
     }
 
     public Voluntario(){}
+
+    public Integer getEdadV() {
+        return edadV;
+    }
+
+    public void setEdadV(Integer edadV) {
+        this.edadV = edadV;
+    }
+
+    public String getGeneroV() {
+        return generoV;
+    }
+
+    public void setGeneroV(String generoV) {
+        this.generoV = generoV;
+    }
 
     public long getId() {
         return id;
