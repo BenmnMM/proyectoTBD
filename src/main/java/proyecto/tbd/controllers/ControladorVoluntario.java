@@ -59,7 +59,7 @@ public class ControladorVoluntario {
 
 
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/crear")
     @ResponseBody
     public String crearVoluntario(@RequestBody Voluntario voluntario){
 
@@ -87,12 +87,23 @@ public class ControladorVoluntario {
 
 
     }
-    
-    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
-    public String deleteVoluntario(@RequestParam Long id){
+
+    @DeleteMapping(value = "/{id}")
+    public String deleteVoluntario(@PathVariable("id") long id){
+
         Voluntario voluntario = voluntarioRepository.findByid(id);
-        this.voluntarioRepository.delete(voluntario);
-        return "Eliminado" + id;
+
+        if(voluntario != null){
+            this.voluntarioRepository.delete(voluntario);
+            return "Eliminado " + id;
+
+
+        }else{
+            return "El Voluntario con id " + id+ " no se encuentra";
+
+        }
+
+
 
     }
 
