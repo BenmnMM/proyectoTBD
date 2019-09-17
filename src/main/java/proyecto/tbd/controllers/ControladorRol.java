@@ -32,16 +32,46 @@ public class ControladorRol {
 
         Rol infRol = rolRepository.findByid(id);
         if(infRol != null){
-            infRol.setNombre(tarea.getNombre());
-            infRol.setDescripcion(tarea.getDescripcion());
-            infRol.setCantidad_voluntarios(tarea.getCantidad_voluntarios());
+            infRol.setNombreR(rol.getNombreR());
             rolRepository.save(infRol);
             return "Rol modificada correctamente.";
 
 
         }else{
 
-            return "Tarea no se encuentra en la base de datos.";
+            return "Rol no se encuentra en la base de datos.";
+        }
+
+    }
+    @PostMapping(value = "/")
+    @ResponseBody
+    public String crearRol(@RequestBody Rol rol){
+
+        if (rolRepository.findByid(rol.getId()) == null)
+        {
+            if(rol.getNombreR() != null) {
+
+                rol.setNombreR(rol.getNombreR());
+                rolRepository.save(rol);
+                return "Rol creado con exito";
+
+            }else{
+
+                return "Debe completar todos los campos!";
+            }
+
+
+
+        }else{
+
+            return "Tarea no se encuentra!";
+        }
+        @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+        public String deleteRol(@RequestParam Long id){
+            Rol rol = rolRepository.findByid(id);
+            this.rolRepository.delete(rol);
+            return "Eliminado" + id;
+
         }
 
     }
