@@ -8,6 +8,7 @@ public class Usuario {
     private String direccion;
     private String edad;
     private List<Caracteristica> caracteristicas;
+    private Tarea tarea;
 
     public String getNombre() {
         return nombre;
@@ -48,4 +49,10 @@ public class Usuario {
     public void setCaracteristicas(List<Caracteristica> caracteristicas) {
         this.caracteristicas = caracteristicas;
     }
+
+    public Tarea getTarea() {
+        return tarea;
+    }
+
+    public void setTarea( Tarea tarea) { this.tarea = tarea; }
 }

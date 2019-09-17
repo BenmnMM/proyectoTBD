@@ -1,7 +1,5 @@
 package proyecto.tbd.models;
 
-
-import com.sun.corba.se.spi.ior.ObjectId;
 import org.springframework.data.annotation.Id;
 import java.util.List;
 
