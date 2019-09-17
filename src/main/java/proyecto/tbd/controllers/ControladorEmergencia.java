@@ -13,7 +13,7 @@ import java.util.List;
 @Validated
 @RequestMapping(path = "/emergencias")
 @CrossOrigin(origins = "*")
-public class ControladorEmegencia
+public class ControladorEmergencia
 {
     @Autowired
     private EmergenciaRepository emergenciaRepository;
@@ -75,11 +75,20 @@ public class ControladorEmegencia
         }
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public String deleteEmergencia(@RequestParam Long id)
+    @DeleteMapping(value = "/{id}")
+    public String deleteEmergencia(@PathVariable("id") long id)
     {
         Emergencia emergencia = emergenciaRepository.findByid(id);
-        this.emergenciaRepository.delete(emergencia);
-        return "La emergencia" + id + "ha sido eliminada.";
+
+        if(emergencia != null){
+            this.emergenciaRepository.delete(emergencia);
+            return "La emergencia " + id + "ha sido eliminada.";
+
+
+        }else{
+            return "La emergencia con id " + id+ " no se encuentra";
+
+        }
+
     }
 }
