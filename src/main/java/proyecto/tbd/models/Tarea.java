@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "tarea")
-public class Tarea {
+public class Tarea implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,9 +27,8 @@ public class Tarea {
     private Integer cantidad_voluntarios;
     //private List<Voluntario> voluntarios;
 
-    /*@Column(name = "caracteristicas", nullable = false)*/
-    @ManyToMany
-    @JoinTable(name = "caracteristicas", joinColumns = @JoinColumn(name = "tarea"), inverseJoinColumns = @JoinColumn (name = "caracteristica"))
+    @Column(name = "caracteristicas", nullable = false)
+    @ElementCollection(targetClass = Long.class)
     private List<Caracteristica> caracteristicas;
 
     public Tarea(long id, String nombre,String descripcion, Integer cantidad_voluntarios, List<Caracteristica> caracteristicas) {

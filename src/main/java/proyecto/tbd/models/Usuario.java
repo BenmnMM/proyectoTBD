@@ -1,11 +1,12 @@
 package proyecto.tbd.models;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.List;
 
 @Entity
 @Table(name = "usuario")
-public class Usuario {
+public class Usuario implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,10 +18,20 @@ public class Usuario {
 
     @Column(name = "apellido", nullable = false)
     private String apellido;
+
+    @Column(name = "direccion", nullable = false)
     private String direccion;
+
+    @Column(name = "edad", nullable = false)
     private String edad;
+
+    @Column(name = "caracteristicas", nullable = false)
+    @ElementCollection(targetClass = Long.class)
     private List<Caracteristica> caracteristicas;
-    private Tarea tarea;
+
+
+    @Column(name = "tarea_id", nullable = true)
+    private long tarea_id;          // Atributo sujeto a posibles cambios
 
     @Column(name="rut", nullable = false)
     private String rut;
@@ -77,9 +88,9 @@ public class Usuario {
         this.id_rol = id_rol;
     }
 
-    public Tarea getTarea() {
-        return tarea;
+    public long getTarea_id() {
+        return tarea_id;
     }
 
-    public void setTarea( Tarea tarea) { this.tarea = tarea; }
+    public void setTarea_id( Tarea tarea) { this.tarea_id = tarea_id; }
 }
