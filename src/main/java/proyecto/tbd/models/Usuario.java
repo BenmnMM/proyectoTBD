@@ -17,12 +17,10 @@ public class Usuario {
 
     @Column(name = "apellido", nullable = false)
     private String apellido;
-<<<<<<< HEAD
     private String direccion;
     private String edad;
     private List<Caracteristica> caracteristicas;
     private Tarea tarea;
-=======
 
     @Column(name="rut", nullable = false)
     private String rut;
@@ -46,7 +44,6 @@ public class Usuario {
     public void setId(long id) {
         this.id = id;
     }
->>>>>>> master
 
     public String getNombre() {
         return nombre;

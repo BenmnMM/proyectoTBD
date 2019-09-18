@@ -64,15 +64,16 @@ public class ControladorRol {
 
         }else{
 
-            return "Tarea no se encuentra!";
+            return "Rol no se encuentra!";
         }
-        @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
-        public String deleteRol(@RequestParam Long id){
-            Rol rol = rolRepository.findByid(id);
-            this.rolRepository.delete(rol);
-            return "Eliminado" + id;
 
-        }
+    }
+
+    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
+    public String deleteRol(@RequestParam Long id){
+        Rol rol = rolRepository.findByid(id);
+        this.rolRepository.delete(rol);
+        return "Eliminado" + id;
 
     }
 }
