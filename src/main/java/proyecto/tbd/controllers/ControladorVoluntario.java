@@ -1,5 +1,6 @@
 package proyecto.tbd.controllers;
 
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -102,16 +103,26 @@ public class ControladorVoluntario {
             return "El Voluntario con id " + id+ " no se encuentra";
 
         }
-
-
-
     }
 
+    @PostMapping(value = "/seedFaker/{cap}")
+    public String createVoluntarioWithFaker(@PathVariable("cap") int cap)
+    {
+        Faker faker = new Faker();
 
+        for(int i = 0; i < cap; i++)
+        {
+            Voluntario voluntario = new Voluntario();
+            System.out.println(cap);
+            voluntario.setNombreV(faker.name().fullName());
+            voluntario.setEdadV(faker.number().numberBetween(1, 100));
+            if (i % 2 == 0)
+                voluntario.setGeneroV("Masculino");
+            else
+                voluntario.setGeneroV("Femenino");
+            voluntarioRepository.save(voluntario);
+        }
 
-
-
-
-
-
+        return "Faker seeding was completed successfully";
+    }
 }

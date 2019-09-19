@@ -49,7 +49,7 @@ public class ControladorEmergencia
         }
     }
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/crear")
     @ResponseBody
     public String crearEmergencia(@RequestBody Emergencia emergencia)
     {
