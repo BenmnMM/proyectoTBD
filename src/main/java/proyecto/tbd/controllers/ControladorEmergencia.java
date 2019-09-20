@@ -1,6 +1,7 @@
 package proyecto.tbd.controllers;
 
 
+import com.github.javafaker.Faker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -55,11 +56,10 @@ public class ControladorEmergencia
     {
         if (emergenciaRepository.findByid(emergencia.getId()) == null)
         {
-            if (emergencia.getNombre() != null && emergencia.getDescripcion() != null && emergencia.getTareas() != null)
+            if (emergencia.getNombre() != null && emergencia.getDescripcion() != null)
             {
                 emergencia.setNombre(emergencia.getNombre());
                 emergencia.setDescripcion(emergencia.getDescripcion());
-                emergencia.setTareas(emergencia.getTareas());
                 emergenciaRepository.save(emergencia);
                 return "Emergencia creada con exito";
             }
@@ -86,9 +86,26 @@ public class ControladorEmergencia
 
 
         }else{
-            return "La emergencia con id " + id+ " no se encuentra";
+            return "La emergencia con id " + id + " no se encuentra";
 
         }
 
+    }
+
+    @PostMapping(value = "/seedFaker/{cap}")
+    public String createEmergenciaWithFaker(@PathVariable("cap") int cap)
+    {
+        Faker faker = new Faker();
+
+        for(int i = 0; i < cap; i++)
+        {
+            Emergencia emergencia = new Emergencia();
+            emergencia.setNombre(faker.hacker().noun());
+            emergencia.setDescripcion(faker.elderScrolls().quote());
+
+            emergenciaRepository.save(emergencia);
+        }
+
+        return "Faker seeding was completed successfully";
     }
 }

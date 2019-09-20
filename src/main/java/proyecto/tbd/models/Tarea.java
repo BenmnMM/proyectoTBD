@@ -31,6 +31,11 @@ public class Tarea implements Serializable{
     @ElementCollection(targetClass = Long.class)
     private List<Caracteristica> caracteristicas;
 
+
+    @ManyToOne
+    @JoinColumn
+    private Emergencia emergencia;
+    /*/
     public Tarea(long id, String nombre,String descripcion, Integer cantidad_voluntarios, List<Caracteristica> caracteristicas) {
         this.id = id;
         this.nombre = nombre;
@@ -40,7 +45,7 @@ public class Tarea implements Serializable{
     }
 
     public Tarea(){}
-
+/*/
     public long getId() {
         return id;
     }

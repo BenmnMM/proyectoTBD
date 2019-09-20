@@ -3,7 +3,7 @@ package proyecto.tbd.models;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
-
+import java.util.Set;
 
 
 @Entity
@@ -21,9 +21,9 @@ public class Emergencia implements Serializable {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @Column(name = "tareas", nullable = false)
-    @ElementCollection(targetClass = Long.class)
-    private List<Tarea> tareas;
+    @OneToMany(mappedBy = "emergencia", cascade = CascadeType.ALL)
+    private Set<Tarea> tareas;
+
 
     public long getId() {
         return id;
@@ -49,11 +49,11 @@ public class Emergencia implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public List<Tarea> getTareas() {
+    public Set<Tarea> getTareas() {
         return tareas;
     }
 
-    public void setTareas(List<Tarea> tareas) {
+    public void setTareas(Set<Tarea> tareas) {
         this.tareas = tareas;
     }
 }

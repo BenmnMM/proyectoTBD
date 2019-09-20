@@ -113,7 +113,6 @@ public class ControladorVoluntario {
         for(int i = 0; i < cap; i++)
         {
             Voluntario voluntario = new Voluntario();
-            System.out.println(cap);
             voluntario.setNombreV(faker.name().fullName());
             voluntario.setEdadV(faker.number().numberBetween(1, 100));
             if (i % 2 == 0)
