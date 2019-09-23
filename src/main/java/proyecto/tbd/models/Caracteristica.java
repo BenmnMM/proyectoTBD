@@ -1,16 +1,28 @@
 package proyecto.tbd.models;
 
-import org.springframework.data.annotation.Id;
+import javax.persistence.*;
 import java.util.List;
 
-
+@Entity
+@Table(name = "caracteristica")
 public class Caracteristica {
 
+
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name="id", nullable = false)
 	private long id;
-    private String nombreC;
-    private String descripcionC;
-	private List<Tarea> tareasC;
-	//private List<Voluntario> voluntariosC;
+
+	@Column(name = "nombre", nullable = false)
+    private String nombre;
+
+	public Caracteristica (){
+	}
+
+	public Caracteristica(String nombre) {
+		this.nombre = nombre;
+	}
 
 	public long getId() {
 		return id;
@@ -20,29 +32,11 @@ public class Caracteristica {
 		this.id = id;
 	}
 
-	public String getNombreC() {
-		return nombreC;
+	public String getNombre() {
+		return nombre;
 	}
 
-	public void setNombreC(String nombreC) {
-		this.nombreC = nombreC;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-
-	public String getDescripcionC() {
-		return descripcionC;
-	}
-
-	public void setDescripcionC(String descripcionC) {
-		this.descripcionC = descripcionC;
-	}
-
-	public List<Tarea> getTareasC() {
-		return tareasC;
-	}
-
-	public void setTareasC(List<Tarea> tareasC) {
-		this.tareasC = tareasC;
-	}
-
-
 }

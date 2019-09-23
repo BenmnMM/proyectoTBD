@@ -14,8 +14,9 @@ import java.util.Optional;
 
 @RestController
 @Validated
+
 @RequestMapping(path = "/voluntarios")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:4200")
 public class ControladorVoluntario {
 
     @Autowired
@@ -32,7 +33,7 @@ public class ControladorVoluntario {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public Voluntario getVoluntario(@PathVariable Long id){
+    public Voluntario getVoluntario(@PathVariable long id){
 
         return voluntarioRepository.findByid(id);
     }
@@ -47,6 +48,7 @@ public class ControladorVoluntario {
             infVoluntario.setGeneroV(voluntario.getGeneroV());
             infVoluntario.setEdadV(voluntario.getEdadV());
             infVoluntario.setNombreV(voluntario.getNombreV());
+            infVoluntario.setCaracteristicas(voluntario.getCaracteristicas());
             voluntarioRepository.save(infVoluntario);
             return "Voluntario modificado correctamente.";
 
@@ -71,6 +73,7 @@ public class ControladorVoluntario {
                 voluntario.setNombreV(voluntario.getNombreV());
                 voluntario.setEdadV(voluntario.getEdadV());
                 voluntario.setGeneroV(voluntario.getGeneroV());
+                voluntario.setCaracteristicas(voluntario.getCaracteristicas());
                 voluntarioRepository.save(voluntario);
                 return "Voluntario creado con exito";
 

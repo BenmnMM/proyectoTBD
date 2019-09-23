@@ -27,12 +27,12 @@ public class ControladorTarea {
     }
 
 
-   /* @GetMapping("/{id}")
-    @ResponseBody*/
-    /*public Tarea getTarea(@PathVariable Long id){
+    @GetMapping("/{id}")
+    @ResponseBody
+    public Tarea getTarea(@PathVariable long id){
 
         return tareaRepository.findByid(id);
-    }*/
+    }
 
 
     @PutMapping(value = "/{id}")
@@ -44,7 +44,11 @@ public class ControladorTarea {
             infTarea.setNombre(tarea.getNombre());
             infTarea.setDescripcion(tarea.getDescripcion());
             infTarea.setCantidad_voluntarios(tarea.getCantidad_voluntarios());
+            infTarea.setVoluntario(tarea.getVoluntario());
+            infTarea.setEmergencia(tarea.getEmergencia());
+
             tareaRepository.save(infTarea);
+
             return "Tarea modificada correctamente.";
 
 
@@ -57,7 +61,7 @@ public class ControladorTarea {
 
 
 
-    @PostMapping(value = "/")
+    @PostMapping(value = "/crear")
     @ResponseBody
     public String crearTarea(@RequestBody Tarea tarea){
 
@@ -68,6 +72,8 @@ public class ControladorTarea {
                 tarea.setNombre(tarea.getNombre());
                 tarea.setDescripcion(tarea.getDescripcion());
                 tarea.setCantidad_voluntarios(tarea.getCantidad_voluntarios());
+                tarea.setVoluntario(tarea.getVoluntario());
+                tarea.setEmergencia(tarea.getEmergencia());
                 tareaRepository.save(tarea);
                 return "Tarea creado con exito";
 
@@ -86,8 +92,8 @@ public class ControladorTarea {
 
     }
 
-    @RequestMapping(value="/{id}", method = RequestMethod.DELETE)
-    public String deleteTarea(@RequestParam Long id){
+    @DeleteMapping(value="/{id}")
+    public String deleteTarea(@PathVariable long id){
         Tarea tarea = tareaRepository.findByid(id);
         this.tareaRepository.delete(tarea);
         return "Eliminado" + id;

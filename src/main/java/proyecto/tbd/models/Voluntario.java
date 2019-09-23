@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import javax.persistence.GeneratedValue;
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 
 @Entity
@@ -24,18 +25,37 @@ public class Voluntario implements Serializable {
     @Column(name = "edadV", nullable = false)
     private Integer edadV;
 
+    @ManyToMany
+    @JoinTable(name = "voluntario_caracteristica"
+            ,joinColumns =@JoinColumn(name = "id_voluntario")
+            ,inverseJoinColumns = @JoinColumn(name = "id_caracteristica")
+    )
+    private List<Caracteristica> caracteristicas;
+
     @Column(name = "generoV", nullable = false)
     private  String generoV;
 
 
-    public Voluntario(long id, String nombreV,Integer edadV, String generoV) {
+
+
+
+    public Voluntario(long id, String nombreV,Integer edadV, List<Caracteristica> caracteristicas, String generoV) {
         this.id = id;
         this.nombreV = nombreV;
         this.edadV=edadV;
+        this.caracteristicas=caracteristicas;
         this.generoV=generoV;
     }
 
     public Voluntario(){}
+
+    public List<Caracteristica> getCaracteristicas() {
+        return caracteristicas;
+    }
+
+    public void setCaracteristicas(List<Caracteristica> caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 
     public Integer getEdadV() {
         return edadV;

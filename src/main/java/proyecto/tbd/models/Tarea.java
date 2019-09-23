@@ -25,27 +25,50 @@ public class Tarea implements Serializable{
 
     @Column(name = "cantidad_voluntarios", nullable = false)
     private Integer cantidad_voluntarios;
-    //private List<Voluntario> voluntarios;
+
 
     @Column(name = "caracteristicas", nullable = false)
     @ElementCollection(targetClass = Long.class)
     private List<Caracteristica> caracteristicas;
 
+    @JoinColumn(name = "id_voluntario",unique = true)
+    @OneToOne(cascade = CascadeType.ALL)
+    private Voluntario voluntario;
 
-    @ManyToOne
-    @JoinColumn
+    @OneToOne(cascade = CascadeType.ALL)
     private Emergencia emergencia;
-    /*/
-    public Tarea(long id, String nombre,String descripcion, Integer cantidad_voluntarios, List<Caracteristica> caracteristicas) {
-        this.id = id;
+
+
+
+
+
+    public Tarea(String nombre, String descripcion, Integer cantidad_voluntarios, List<Caracteristica> caracteristicas, Voluntario voluntario, Emergencia emergencia) {
         this.nombre = nombre;
-        this.descripcion=descripcion;
-        this.cantidad_voluntarios=cantidad_voluntarios;
-        this.caracteristicas=caracteristicas;
+        this.descripcion = descripcion;
+        this.cantidad_voluntarios = cantidad_voluntarios;
+        this.caracteristicas = caracteristicas;
+        this.voluntario = voluntario;
+        this.emergencia=emergencia;
+    }
+
+    public Emergencia getEmergencia() {
+        return emergencia;
+    }
+
+    public void setEmergencia(Emergencia emergencia) {
+        this.emergencia = emergencia;
     }
 
     public Tarea(){}
-/*/
+
+    public Voluntario getVoluntario() {
+        return voluntario;
+    }
+
+    public void setVoluntario(Voluntario voluntario) {
+        this.voluntario = voluntario;
+    }
+
     public long getId() {
         return id;
     }

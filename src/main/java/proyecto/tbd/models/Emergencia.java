@@ -21,8 +21,8 @@ public class Emergencia implements Serializable {
     @Column(name = "descripcion", nullable = false)
     private String descripcion;
 
-    @OneToMany(mappedBy = "emergencia", cascade = CascadeType.ALL)
-    private Set<Tarea> tareas;
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<Tarea> tareas;
 
 
     public long getId() {
@@ -49,11 +49,11 @@ public class Emergencia implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public Set<Tarea> getTareas() {
+    public List<Tarea> getTareas() {
         return tareas;
     }
 
-    public void setTareas(Set<Tarea> tareas) {
+    public void setTareas(List<Tarea> tareas) {
         this.tareas = tareas;
     }
 }

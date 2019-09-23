@@ -21,12 +21,16 @@ public class ControladorEmergencia
 
     @GetMapping("")
     @ResponseBody
-    public List<Emergencia> getEmergencias() { return emergenciaRepository.findAll(); }
+    public List<Emergencia> getEmergencias() {
+
+        return emergenciaRepository.findAll();
+    }
 
     @GetMapping("/{id}")
     @ResponseBody
     public Emergencia getEmergencia(@PathVariable long id)
     {
+
         return emergenciaRepository.findByid(id);
     }
 
@@ -60,6 +64,7 @@ public class ControladorEmergencia
             {
                 emergencia.setNombre(emergencia.getNombre());
                 emergencia.setDescripcion(emergencia.getDescripcion());
+                emergencia.setTareas(emergencia.getTareas());
                 emergenciaRepository.save(emergencia);
                 return "Emergencia creada con exito";
             }
