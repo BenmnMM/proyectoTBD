@@ -42,6 +42,7 @@ public class ControladorUsuario {
             infUsuario.setNombre(usuario.getNombre());
             infUsuario.setApellido(usuario.getApellido());
             infUsuario.setRut(usuario.getRut());
+            infUsuario.setEdad(usuario.getEdad());
             usuarioRepository.save(infUsuario);
             return "Usuario modificada correctamente";
         }

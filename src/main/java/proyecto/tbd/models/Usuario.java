@@ -18,11 +18,8 @@ public class Usuario implements Serializable {
     @Column(name = "apellido", nullable = false)
     private String apellido;
 
-    @Column(name = "direccion", nullable = false)
-    private String direccion;
-
     @Column(name = "edad", nullable = false)
-    private String edad;
+    private Integer edad;
 
     @Column(name="rut", nullable = false)
     private String rut;
@@ -32,11 +29,12 @@ public class Usuario implements Serializable {
 
     public Usuario(){}
 
-    public Usuario(String nombre, String apellido, String rut, Integer id_rol) {
+    public Usuario(String nombre, String apellido, String rut, Integer id_rol,Integer edad ) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.rut = rut;
         this.id_rol = id_rol;
+        this.edad=edad;
     }
 
     public long getId() {
@@ -79,4 +77,11 @@ public class Usuario implements Serializable {
         this.id_rol = id_rol;
     }
 
+    public Integer getEdad() {
+        return edad;
+    }
+
+    public void setEdad(Integer edad) {
+        this.edad = edad;
+    }
 }
